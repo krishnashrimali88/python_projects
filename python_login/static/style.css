@@ -1,0 +1,48 @@
+
+
+
+
+h1{
+  text-align: center;
+  color: white;
+  font-weight: bolder;
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.alpha{
+  padding: 40px;
+  display:grid;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+
+}
+
+body{
+  background: #2A7B9B;
+background: linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);
+}
+
+#l1{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  color: white;
+}
+
+#l2{
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  color: white;
+}
+
+#i1{
+
+  background-color: rgba(255, 255, 255, 0.103);
+  width:140%;
+}
+
+#i2{
+  background-color: rgba(255, 255, 255, 0.103);
+  width:140%;
+}
