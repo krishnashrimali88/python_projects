@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my login
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+    <form action="/login" method="POST">
+
+        
+
+        <h1>LOGIN</h1>
+        <div class="alpha">
+        <label id="l1">Email:</label>
+        <input  type="text" id = "i1" name = "email"><br><br>
+        <label id = l2>Password:</label>
+        <input type="text" id = "i2" name = "password">
+        <input type="submit">
+        </div>
+        </form>
+</body>
+</html>
