@@ -43,7 +43,7 @@ def download():
                                 percent = (downloaded/total) * 100
                                 percent_final = percent / 100
                                 bar.set(percent_final)
-                                per.configure(text=f'{percent}%')
+                                per.configure(text=f'{percent:.1f}%')
                                 root.after(0,bar.set,percent_final)
                            
             root.after(0, lambda: toast(root, "done", "success"))
