@@ -1,229 +1,109 @@
-import tkinter as tk
-global v,num,num1
-num = []
-num1 = []
+import customtkinter as ctk
 
 
-
-def adder():
-    global num,num1
-    a1 = ''.join(num)
-    a2 = ''.join(num1) 
-    ans = int(a1) + int(a2)
-    num1.clear()
-    result.config(text=str(ans))
-   
-   
-
-def subber():
-    global num,num1
-    a1 = ''.join(num)
-    a2 = ''.join(num1) 
-    ans = int(a1) - int(a2)
-    num1.clear()
-    result.config(text=str(ans))
-
-def multiplier():
-    global num,num1
-    a1 = ''.join(num)
-    a2 = ''.join(num1) 
-    ans = int(a1) * int(a2)
-    num1.clear()
-    result.config(text=str(ans))   
-
-def divisor():
-    global num,num1
-    a1 = ''.join(num)
-    a2 = ''.join(num1) 
-    ans = int(a1) / int(a2)
-    num1.clear()
-    result.config(text=str(ans))   
+class calculator:
+    def __init__(self):
+      
+        
+        self.root = ctk.CTk()
+        self.root.title('Calculator')
+        self.root.geometry('320x550')
+        self.root.resizable(False,False)
+        self.enter = ctk.CTkEntry(self.root,width=350,height=200,state='normal',font=ctk.CTkFont('Arial',50,'bold'))
+        self.enter.pack(pady = 10)
 
 
-root  = tk.Tk()
-root.resizable(False,False)
-root.geometry("300x550")
-root.title("calculator")
+        def result():
+            try:
+                new = self.enter.get()
+                op = eval(new)
 
-v = tk.IntVar(value=0)
-k = tk.IntVar(value=0)
+            except ZeroDivisionError as e:
+                self.enter.delete(0,'end')
+                self.enter.insert('end','ERROR')
 
-def radio1():
-    if v.get() == 1:
-        b1.config(state="disabled")
-       
-    elif v.get() == 0 :
-        b1.config(state="active")
+
+            except ValueError as e:
+                self.enter.delete(0,'end')
+                self.enter.insert('end','ERROR')     
+
+            except Exception as e:
+                self.enter.delete(0,'end')
+                self.enter.insert('end','ERROR')
+
+            else:
+                self.enter.delete(0,'end')
+                self.enter.insert('end',str(op))
+
+
+        def button(n):
+            print(f'button no{n} is clicked')
+            self.enter.insert('end',n)
+
+        def clear():
+            self.enter.delete(0,'end')    
         
     
-def radio2():
-    if k.get() == 1 :
-        bb.config(state="disabled")
-    elif k.get() == 0 :
-        bb.config(state="active")
 
-def zero():
-    if v.get() == 1:
-        num.append("0")
-        result.config(text=''.join(num))
-    elif k.get() == 1:
-        num1.append("0")
-        result.config(text=''.join(num1))
-  
 
-def one():
-    if v.get() == 1:
-        num.append("1")
-        result.config(text=''.join(num))
-    elif k.get() == 1:
-        num1.append("1")
-        result.config(text=''.join(num1))
-   
+        self.one = ctk.CTkButton(self.root,text=1,width=50,command=lambda:button(1))
+        self.one.place(x = 10,y = 220)
 
-def two():
-    if v.get() == 1:
-        num.append("2")
-        result.config(text=''.join(num))
-    elif k.get() == 1:
-        num1.append("2")
-        result.config(text=''.join(num1))
+        self.two = ctk.CTkButton(self.root,text=2,width=50,command=lambda:button(2))
+        self.two.place(x = 80 ,y = 220)
+
+        self.three = ctk.CTkButton(self.root,text=3,width=50,command=lambda:button(3))
+        self.three.place(x = 160 ,y = 220)
+
+        self.four = ctk.CTkButton(self.root,text=4,width=50,command=lambda:button(4))
+        self.four.place(x = 240 ,y = 220)
+
+        self.five = ctk.CTkButton(self.root,text=5,width=50,command=lambda:button(5))
+        self.five.place(x = 10 ,y = 260)
+        
+        self.six = ctk.CTkButton(self.root,text=6,width=50,command=lambda:button(6))
+        self.six.place(x = 80 ,y = 260)
+        
+        self.seven = ctk.CTkButton(self.root,text=7,width=50,command=lambda:button(7))
+        self.seven.place(x = 160 ,y = 260)
+        
+        self.eight = ctk.CTkButton(self.root,text=8,width=50,command=lambda:button(8))
+        self.eight.place(x = 240 ,y = 260)
+
+        self.nine = ctk.CTkButton(self.root,text=9,width=50,command=lambda:button(9))
+        self.nine.place(x = 10 ,y = 300)
+        
+        self.zero = ctk.CTkButton(self.root,text=0,width=50,command=lambda:button(0))
+        self.zero.place(x = 80 ,y = 300)
     
+        self.add = ctk.CTkButton(self.root,text="+",width = 50, command=lambda:button('+'))
+        self.add.place(x = 160,y = 300)
+        
+        self.sub = ctk.CTkButton(self.root,text="-",width = 50, command=lambda:button('-'))
+        self.sub.place(x = 240,y = 300)
 
-def three():
-    if v.get() == 1:
-        num.append("3")
-        result.config(text=''.join(num))
-    elif k.get() == 1:
-        num1.append("3")
-        result.config(text=''.join(num1))
-     
+        self.mul = ctk.CTkButton(self.root,text="*",width = 50, command=lambda:button('*'))
+        self.mul.place(x = 10,y = 340)
 
-def four():
-    if v.get() == 1:
-        num.append("4")
-        result.config(text=''.join(num))
-    elif k.get() == 1:
-        num1.append("4")
-        result.config(text=''.join(num1))
+        self.div = ctk.CTkButton(self.root,text="/",width = 50, command=lambda:button('/'))
+        self.div.place(x = 80,y = 340)
+                       
+
     
+        self.result = ctk.CTkButton(self.root,text="=",width = 50, command=result)
+        self.result.place(x = 160,y = 340)
+        
 
-def five():
-    if v.get() == 1:
-        num.append("5")
-        result.config(text=''.join(num))
-    elif k.get() == 1:
-        num1.append("5")
-        result.config(text=''.join(num1))
- 
+        self.clear = ctk.CTkButton(self.root,text='CLR',width=50,command=clear)
+        self.clear.place(x = 240,y = 340)
 
-def six():
-    if v.get() == 1:
-        num.append("6")
-        result.config(text=''.join(num))
-    elif k.get() == 1:
-        num1.append("6")
-        result.config(text=''.join(num1))
-          
-
-def seven():
-    if v.get() == 1:
-        num.append("7")
-        result.config(text=''.join(num))
-    elif k.get() == 1:
-        num1.append("7")
-        result.config(text=''.join(num1))
-    
-
-def seven():
-    if v.get() == 1:
-        num.append("7")
-        result.config(text=''.join(num))
-    elif k.get() == 1:
-        num1.append("7")
- 
-
-def seven():
-    if v.get() == 1:
-        num.append("7")
-        result.config(text=''.join(num))
-    elif k.get() == 1:
-        num1.append("7")
-        result.config(text=''.join(num1))
- 
-
-def eight():
-    if v.get() == 1:
-        num.append("8")
-        result.config(text=''.join(num))
-    elif k.get() == 1:
-        num1.append("8")
-        result.config(text=''.join(num1))
-
-
-def nine():
-    if v.get() == 1:
-        num.append("9")
-        result.config(text=''.join(num))
-    elif k.get() == 1:
-        num1.append("9")
-        result.config(text=''.join(num1))
- 
-
-def clear():
-    num.clear()
-    num1.clear()
-    result.config(text="0.0")
-
-
-
-
-label1 = tk.Label(text="calculator",font=("calibri",20))
-result = tk.Label(text="0.0",font=("calibri",18),justify="left",borderwidth=2,relief="solid")
-
-bb = tk.Checkbutton(text="first number",font=("calibri",8),variable=v,onvalue=1,offvalue=0,command=radio1)
-b1 = tk.Checkbutton(text="second number",font=("calibri",8),variable=k,onvalue=1,offvalue=0,command=radio2)
-
-button0 = tk.Button(text="0",font=("calibri",30),cursor="hand2",command=zero)
-button1 = tk.Button(text="1",font=("calibri",30),cursor="hand2",command=one)
-button2 = tk.Button(text="2",font=("calibri",30),cursor="hand2",command=two)
-button3 = tk.Button(text="3",font=("calibri",30),cursor="hand2",command=three)
-button4 = tk.Button(text="4",font=("calibri",30),cursor="hand2",command=four)
-button5 = tk.Button(text="5",font=("calibri",30),cursor="hand2",command=five)
-button6 = tk.Button(text="6",font=("calibri",30),cursor="hand2",command=six)
-button7 = tk.Button(text="7",font=("calibri",30),cursor="hand2",command=seven)
-button8 = tk.Button(text="8",font=("calibri",30),cursor="hand2",command=eight)
-button9 = tk.Button(text="9",font=("calibri",30),cursor="hand2",command=nine)
-
-cls = tk.Button(text="clr",font=("calibri",18),cursor="hand2",command=clear)
-ad = tk.Button(text="add",font=("calibri",18),cursor="hand2",command=adder)
-sub = tk.Button(text="sub",font=("calibri",18),cursor="hand2",command=subber)
-mul = tk.Button(text="mul",font=("calibri",18),cursor="hand2",command=multiplier)
-div = tk.Button(text="div",font=("calibri",18),cursor="hand2",command=divisor)
+        self.root.mainloop()
 
 
 
 
 
 
-bb.place(x = 10,y = 10)
-b1.place(x = 10,y = 30)
-label1.place(x = 110,y  = 5)
-result.place(x=50,y=60)
-button1.place(x = 50,y=100)
-button2.place(x= 110,y = 100)
-button3.place(x = 170,y= 100)
-button4.place(x = 50,y= 190)
-button5.place(x = 110, y = 190)
-button6.place(x = 170, y = 190)
-button7.place(x= 50,y=280)
-button8.place(x= 110,y=280)
-button9.place(x= 170,y=280)
-button0.place(x = 240,y = 190)
-cls.place(x = 50,y = 370)
-ad.place(x = 110,y = 370)
-sub.place(x = 170,y = 370)
-mul.place(x = 50,y = 460)
-div.place(x = 110,y = 460)
 
-
-root.mainloop()
+if __name__ == '__main__':
+    calculator()
